@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Calling App</title>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Additional styles for notification features */
+        .notification-permission {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .notification-permission button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .notification-permission .allow-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .notification-permission .deny-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        /* Make notification boxes more visible when they contain active calls */
+        .notification-box.active-call {
+            animation: pulse 1.5s infinite;
+            border: 2px solid #859ef0;
+        }
+        
+        .notification-box.missed-call {
+            background-color: #ffebee;
+            border: 1px solid #ffcdd2;
+            color: #c62828;
+        }
+        
+        .notification-box.missed-call .close-btn {
+            background-color: #c62828;
+            color: white;
+        }
+
+        .icon-container {
+            display: flex;
+            gap: 10px; /* Space between icons */
+            margin-top: 10px;
+        }
+
+        .icon-container img {
+            cursor: pointer;
+            width: 40px; /* Adjust size as needed */
+            height: 40px;
+            transition: transform 0.2s ease; /* Add a smooth hover effect */
+        }
+
+        .icon-container img:hover {
+            transform: scale(1.1); /* Slightly enlarge the image on hover */
+        }
+    </style>
+</head>
+<body>
+    <main class="main-container">
+        <aside class="caller-list-wrapper">
+            <h1 class="caller-list-heading h-font">Contacts</h1>
+            <ul id="allusers" class="caller-list">
+                <!-- User list will be populated dynamically -->
+            </ul>
+        </aside>
+        <section class="video-call-container">
+            <div class="username-input">
+                <input id="username" type="text" placeholder="Enter Username"><button id="create-user">Create</button>
+            </div>
+            <div class="video-streams">
+                <div class="local-video">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                </div>
+                <div class="remote-video">
+                    <video id="remoteVideo" autoplay playsinline></video>
+                </div>
+            </div>
+            <div>
+                <button id="end-call-btn" class="call call-disconnect d-none">
+                    <img src="/js/images/phone-disconnect.png" alt="">
+                </button>
+            </div>
+            <button id="screen-share-btn">Share Screen</button>
+            <!-- <button id="camera-btn">Start Camera</button> -->
+             <div class="icon-container">
+                <img id="camera-toggle" src="/js/images/camera-on.png" alt="Toggle Camera">
+                <img id="audio-toggle" src="/js/images/mic-on.png" alt="Toggle Audio">
+            </div>
+        </section>
+    </main>
+    
+    <!-- Call notification container -->
+    <div id="notification-container" class="notification-container">
+        <!-- Notifications will be added dynamically -->
+    </div>
+    
+    <script src="/js/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

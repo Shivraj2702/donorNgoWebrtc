@@ -1,0 +1,26 @@
+{
+  "name": "rtc",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "git-filter-repo": "^0.0.30",
+    "node-fetch": "^3.3.2",
+    "socket.io": "^4.8.1",
+    "twilio": "^5.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
